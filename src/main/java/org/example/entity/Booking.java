@@ -1,0 +1,38 @@
+package org.example.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import org.example.model.BookingStatus;
+
+@Entity
+@Table(name = "bookings")
+@Data
+public class Booking {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(name = "room_id", nullable = false)
+    private Long roomId;
+
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate;
+
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private BookingStatus status;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+}

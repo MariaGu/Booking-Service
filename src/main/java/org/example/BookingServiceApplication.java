@@ -13,3 +13,17 @@ public class BookingServiceApplication {
         SpringApplication.run(BookingServiceApplication.class, args);
     }
 }
+
+//// Декларативный клиент: вместо URL — имя сервиса в реестре
+//@FeignClient(name = "price-service")
+//public interface PriceFeignClient {
+//    @GetMapping("/api/prices/{sku}")
+//    BigDecimal getPrice(@PathVariable String sku);
+//}
+//
+//@Service
+//public class PriceServiceFacade {
+//    private final PriceFeignClient client;
+//    public PriceServiceFacade(PriceFeignClient client) { this.client = client; }
+//    public BigDecimal priceFor(String sku) { return client.getPrice(sku); }
+//}
